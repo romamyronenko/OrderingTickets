@@ -2,7 +2,8 @@ import mysql.connector
 
 
 class DataBase:
-    def __init__(self, user, password, host, database):
+    def __init__(self, user, password, host, database, path_to_sql=''):
+        self.path_to_sql = path_to_sql
         self.conn = mysql.connector.connect(user=user,
                                             password=password,
                                             host=host,
@@ -22,7 +23,7 @@ class DataBase:
             self.cursor.execute('drop table event')
 
     def create_tables(self):
-        for i in open('sql/create_tables.sql', 'r').read().split(';'):
+        for i in open(self.path_to_sql+'sql/create_tables.sql', 'r').read().split(';'):
             self.cursor.execute(i)
 
     def add_event(self, name, date, place, total_available):

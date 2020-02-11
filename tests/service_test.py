@@ -5,7 +5,7 @@ import mysql.connector
 db = service.db.DataBase(user='debian-sys-maint',
                          password='PggWbsvEVgDZUYar',
                          host='127.0.0.1',
-                         database='ordtick_test')
+                         database='ordtick_test', path_to_sql='../')
 
 
 class DataBaseTest(unittest.TestCase):
