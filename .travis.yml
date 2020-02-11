@@ -1,0 +1,8 @@
+language: python
+python:
+    - "3.8"
+# command to install dependencies
+install:
+    - pip install flask
+    - pip install flask_restful
+    - pip install mysql.connector
