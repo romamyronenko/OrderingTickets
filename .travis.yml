@@ -6,14 +6,5 @@ install:
     - pip install flask
     - pip install flask_restful
     - pip install mysql.connector
-services:
-    - mysql
 script:
-    - python -m unittest tests/service_test.py
-test:
-  adapter: mysql2
-  database: ordtick_test
-  username: debian-sys-maint
-  encoding: utf8
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS ordtick_test;'
+    - tests/service_test.py
