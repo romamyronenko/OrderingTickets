@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS event(
 );
 
 CREATE TABLE IF NOT EXISTS ticket(
-    `id` int,
+    `id` int auto_increment,
     `event_id` int,
     `Owner` varchar(90) NOT NULL,
 
