@@ -7,4 +7,4 @@ install:
     - pip install flask_restful
     - pip install mysql.connector
 script:
-    - tests/service_test.py
+    - python -m unittest tests/service_test.py

@@ -2,10 +2,10 @@ import unittest
 import service.db
 import mysql.connector
 
-db = service.db.DataBase(user='debian-sys-maint',
-                         password='PggWbsvEVgDZUYar',
-                         host='127.0.0.1',
-                         database='ordtick_test', path_to_sql='../')
+db = service.db.DataBase(user='b86271d0784a40',
+                         password='b40ff7a9',
+                         host='us-cdbr-iron-east-04.cleardb.net',
+                         database='heroku_a4b07b7f4d206f2')
 
 
 class DataBaseTest(unittest.TestCase):
