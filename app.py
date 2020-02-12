@@ -48,8 +48,8 @@ parser.add_argument('event_id')
 parser.add_argument('event_name')
 parser.add_argument('event_date')
 parser.add_argument('event_place')
-parser.add_argument('event_price')
 parser.add_argument('event_ta')
+parser.add_argument('event_price')
 parser.add_argument('ticket_owner')
 
 
@@ -63,8 +63,10 @@ class Events(Resource):
                  'Name': i[1],
                  'Date': str(i[2]),
                  'Place': i[3],
-                 'Total Available': i[4]} for i in events]
+                 'Total Available': i[4],
+                 'Price': i[5]} for i in events]
 
+    @wrapper
     def post(self):
         """Create new event"""
         args = parser.parse_args()
@@ -77,6 +79,7 @@ class Events(Resource):
 
 
 class Event(Resource):
+    @wrapper
     def get(self, event_id):
         """Return info about event"""
         data = list(db.get_event_by_id(event_id))
@@ -85,13 +88,16 @@ class Event(Resource):
                 'Date': str(data[2]),
                 'Place': data[3],
                 'Total Available': data[4],
+                'Price': data[5],
                 }
 
+    @wrapper
     def delete(self, event_id):
         """Remove event from database"""
         db.remove_event(event_id)
         return '', 204
 
+    @wrapper
     def put(self, event_id):
         """Change event data"""
         args = parser.parse_args()
@@ -105,6 +111,7 @@ class Event(Resource):
 
 
 class Tickets(Resource):
+    @wrapper
     def get(self):
         """Return list of tickets"""
         tickets = db.get_tickets()
@@ -112,6 +119,7 @@ class Tickets(Resource):
                  'event_id': i[1],
                  'owner': i[2]} for i in tickets]
 
+    @wrapper
     def post(self):
         """Create new ticket"""
         args = parser.parse_args()
@@ -120,6 +128,7 @@ class Tickets(Resource):
 
 
 class Ticket(Resource):
+    @wrapper
     def get(self, ticket_id):
         """Return info about ticket"""
         data = list(db.get_ticket(ticket_id))
@@ -127,11 +136,13 @@ class Ticket(Resource):
                 'event_id': data[1],
                 'owner': data[2]}
 
+    @wrapper
     def delete(self, ticket_id):
         """Remove ticket from database"""
         db.remove_ticket(ticket_id)
         return '', 204
 
+    @wrapper
     def put(self, ticket_id):
         """Change ticket data"""
         args = parser.parse_args()

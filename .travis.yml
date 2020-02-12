@@ -8,3 +8,4 @@ install:
     - pip install mysql.connector
 script:
     - python -m unittest tests/test_service.py
+    - python -m unittest tests/test_rest.py

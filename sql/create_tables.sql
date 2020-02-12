@@ -12,8 +12,6 @@ CREATE TABLE IF NOT EXISTS ticket(
     `id` int auto_increment,
     `event_id` int,
     `Owner` varchar(90) NOT NULL,
-
-
     PRIMARY KEY (`id`),
     FOREIGN KEY (`event_id`) REFERENCES event(`id`)
 );

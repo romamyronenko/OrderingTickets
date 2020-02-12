@@ -24,13 +24,14 @@ class DataBase:
             self.cursor.execute('drop table event')
 
     def create_tables(self):
-        """Create tables in databas"""
+        """Create tables in database"""
         for i in open('sql/create_tables.sql', 'r').read().split(';'):
             self.cursor.execute(i)
 
     def add_event(self, name, date, place, total_available, price):
         """Create new event"""
-        self.cursor.execute('INSERT INTO event(`Name`, Date, Place, `Total Available`, Price) VALUES("%s", "%s", "%s", %s, %s)' %
+        self.cursor.execute('INSERT INTO event (`Name`, `Date`, `Place`, `Total Available`, `Price`) VALUES'
+                            '("%s", "%s", "%s", %s, %s)' %
                             (name, date, place, total_available, price))
 
     def add_ticket(self, event_id, owner):
