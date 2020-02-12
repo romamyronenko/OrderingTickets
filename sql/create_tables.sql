@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS event(
     `Date` date,
     `Place` varchar(90) NOT NULL,
     `Total Available` int,
+    `Price` int,
     UNIQUE(id)
 );
 
